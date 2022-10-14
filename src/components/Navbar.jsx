@@ -41,7 +41,7 @@ function Navbar({ login, setLogin }) {
             <li className="nav-item pe-4">
               <NavLink
                 className="nav-link"
-                to="/about"
+                to="/"
                 style={{ textDecoration: "none", color: "black" }}
               >
                 About
