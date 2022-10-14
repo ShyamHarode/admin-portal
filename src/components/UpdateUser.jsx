@@ -78,7 +78,7 @@ function UpdateUser({ userList, setUserList, selectedUser, index }) {
             <label htmlFor="inputPassword4">Password</label>
             <input
               name="password"
-              type="password"
+              type="text"
               className="form-control"
               id="inputPassword4"
               placeholder="Password"

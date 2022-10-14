@@ -33,12 +33,16 @@ function Dashboard({ userList, setUserList, handleSelect }) {
   };
   const userNameFilter = (name) => {
     const list = [...userList];
-    const newList = list.filter((user) => user.userName.includes(name));
+    const newList = list.filter((user) =>
+      user.userName.toLowerCase().includes(name.toLowerCase())
+    );
     setFilterList(newList);
   };
   const nameFilter = (name) => {
     const list = [...userList];
-    const newList = list.filter((user) => user.firstName.includes(name));
+    const newList = list.filter((user) =>
+      user.firstName.toLowerCase().includes(name.toLowerCase())
+    );
     setFilterList(newList);
   };
 
@@ -60,7 +64,7 @@ function Dashboard({ userList, setUserList, handleSelect }) {
           className="btn btn-outline-primary m-2"
           onClick={() => navigate("/create-user")}
         >
-          Create User
+          Create New User
         </button>
         <div>
           <h3>Filter</h3>
@@ -83,28 +87,31 @@ function Dashboard({ userList, setUserList, handleSelect }) {
                 onChange={(e) => userNameFilter(e.target.value)}
               />
             </div>
+
+            {/* <br /> */}
+            <div className="col-md-6">
+              <b className="mx-4">Gender</b>
+              <select
+                className="form-select w-25 mx-2"
+                onChange={(e) => genderFilter(e.target.value)}
+              >
+                <option value="All">All</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div className="col-md-6">
+              <b className="mx-4">Status</b>
+              <select
+                className="form-select w-25 mx-2"
+                onChange={(e) => statusFilter(e.target.value)}
+              >
+                <option value="All">All</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
           </form>
-          <br />
-          <b className="mx-4">Gender</b>
-
-          <select
-            class="form-select w-25"
-            onChange={(e) => genderFilter(e.target.value)}
-          >
-            <option selected>All</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-          <b className="mx-4">Status</b>
-
-          <select
-            class="form-select w-25"
-            onChange={(e) => statusFilter(e.target.value)}
-          >
-            <option selected>All</option>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-          </select>
         </div>
 
         <br />
@@ -113,7 +120,7 @@ function Dashboard({ userList, setUserList, handleSelect }) {
       {showDetails && (
         <UserDetails setShowDetails={setShowDetails} user={currUser} />
       )}
-      <table className="table table-hover table-bordered m-2 text-wrap">
+      <table className="table table-hover table-bordered  m-2 text-wrap">
         <thead>
           <tr>
             <th scope="col">No.</th>
@@ -138,7 +145,7 @@ function Dashboard({ userList, setUserList, handleSelect }) {
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Username</span>
                   <i
-                    className="fa-sharp fa-solid fa-magnifying-glass"
+                    className="fa-sharp fa-solid fa-magnifying-glass cp"
                     onClick={() => setSearch1(true)}
                   ></i>
                 </div>
@@ -165,7 +172,7 @@ function Dashboard({ userList, setUserList, handleSelect }) {
                 <div className="d-flex justify-content-between align-items-center">
                   <span>First Name</span>
                   <i
-                    className="fa-sharp fa-solid fa-magnifying-glass"
+                    className="fa-sharp fa-solid fa-magnifying-glass cp"
                     onClick={() => setSearch2(true)}
                   ></i>
                 </div>
@@ -193,10 +200,17 @@ function Dashboard({ userList, setUserList, handleSelect }) {
             <th scope="col">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
+          {filterList.length === 0 && (
+            <tr>
+              <td colSpan="6" className="w-100">
+                <h3>No Data Found!</h3>
+              </td>
+            </tr>
+          )}
           {filterList.map((user, idx) => {
             return (
-              <tr key={idx}>
+              <tr className="align-middle" key={idx}>
                 <th scope="row">{idx + 1}</th>
                 <td>{user.userName}</td>
                 <td>{user.firstName}</td>

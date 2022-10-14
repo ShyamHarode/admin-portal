@@ -49,6 +49,7 @@ function CreateUser({ userList, setUserList }) {
               className="form-control"
               placeholder="First name"
               onChange={handleChange}
+              required
             />
           </div>
           <div className=" mx-5 w-25">
@@ -59,6 +60,7 @@ function CreateUser({ userList, setUserList }) {
               className="form-control"
               placeholder="Last name"
               onChange={handleChange}
+              required
             />
           </div>
         </div>
@@ -71,6 +73,7 @@ function CreateUser({ userList, setUserList }) {
               className="form-control"
               placeholder="Username"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group w-50 mt-3">
@@ -82,6 +85,7 @@ function CreateUser({ userList, setUserList }) {
               id="inputEmail4"
               placeholder="Email"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group w-50 mt-3">
@@ -93,6 +97,7 @@ function CreateUser({ userList, setUserList }) {
               id="inputPassword4"
               placeholder="Password"
               onChange={handleChange}
+              required
             />
           </div>
         </div>
@@ -105,6 +110,7 @@ function CreateUser({ userList, setUserList }) {
             id="inputAddress"
             placeholder="Address"
             onChange={handleChange}
+            required
           />
         </div>
         <div className="form-row">
@@ -118,6 +124,7 @@ function CreateUser({ userList, setUserList }) {
                 name="gender"
                 value={"Male"}
                 onChange={handleChange}
+                required
               />
               <label className="form-check-label cp" htmlFor="m">
                 Male
@@ -131,6 +138,7 @@ function CreateUser({ userList, setUserList }) {
                 name="gender"
                 value={"Female "}
                 onChange={handleChange}
+                required
               />
               <label className="form-check-label cp" htmlFor="f">
                 Female
@@ -149,6 +157,7 @@ function CreateUser({ userList, setUserList }) {
                 name="status"
                 value={"Active"}
                 onChange={handleChange}
+                required
               />
               <label className="form-check-label cp" htmlFor="a">
                 Active
@@ -162,6 +171,7 @@ function CreateUser({ userList, setUserList }) {
                 name="status"
                 value={"Inactive"}
                 onChange={handleChange}
+                required
               />
               <label className="form-check-label cp" htmlFor="i">
                 Inactive

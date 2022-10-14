@@ -27,9 +27,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {console.log(selectedUser)}
         <Navbar login={login} setLogin={setLogin} />
-        <hr />
+
         <Routes>
           <Route exact path="/" element={<Login setLogin={setLogin} />} />
           <Route
