@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UserDetails from "./UserDetails";
 
 function Dashboard({ userList, setUserList, handleSelect }) {
-  // const [filterList, setFilterList]
+  const [filterList, setFilterList] = useState(userList);
   const [showDetails, setShowDetails] = useState(false);
   const [search1, setSearch1] = useState(false);
   const [search2, setSearch2] = useState(false);
@@ -19,13 +19,38 @@ function Dashboard({ userList, setUserList, handleSelect }) {
   const handleDelete = (id) => {
     const newList = userList.filter((user) => id !== user.id);
     setUserList(newList);
+    setFilterList(newList);
   };
-  
-  const statusFilter=(status)=>{
+
+  const statusFilter = (status) => {
+    if (status === "All") {
+      setFilterList(userList);
+    } else {
+      const list = [...userList];
+      const newList = list.filter((user) => user.status === status);
+      setFilterList(newList);
+    }
+  };
+  const userNameFilter = (name) => {
     const list = [...userList];
-    const newList= list.filter((user)=>user.status===status);
-    
-  }
+    const newList = list.filter((user) => user.userName.includes(name));
+    setFilterList(newList);
+  };
+  const nameFilter = (name) => {
+    const list = [...userList];
+    const newList = list.filter((user) => user.firstName.includes(name));
+    setFilterList(newList);
+  };
+
+  const genderFilter = (gender) => {
+    if (gender === "All") {
+      setFilterList(userList);
+    } else {
+      const list = [...filterList];
+      const newList = list.filter((user) => user.gender === gender);
+      setFilterList(newList);
+    }
+  };
 
   return (
     <div className="w-100">
@@ -39,11 +64,54 @@ function Dashboard({ userList, setUserList, handleSelect }) {
         </button>
         <div>
           <h3>Filter</h3>
-          Gender
+          <form className="row g-3 px-2">
+            <div className="col-md-6">
+              <b className="form-label">Name</b>
+
+              <input
+                type="email"
+                className="form-control w-50"
+                id="inputEmail4"
+                onChange={(e) => nameFilter(e.target.value)}
+              />
+            </div>
+            <div className="col-md-6">
+              <b className="form-label">Username</b>
+              <input
+                type="text"
+                className="form-control w-50"
+                onChange={(e) => userNameFilter(e.target.value)}
+              />
+            </div>
+          </form>
+          <br />
+          <b className="mx-4">Gender</b>
+
+          <select
+            class="form-select w-25"
+            onChange={(e) => genderFilter(e.target.value)}
+          >
+            <option selected>All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <b className="mx-4">Status</b>
+
+          <select
+            class="form-select w-25"
+            onChange={(e) => statusFilter(e.target.value)}
+          >
+            <option selected>All</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
         </div>
+
+        <br />
       </div>
+
       {showDetails && (
-        <UserDetails setShowDetails={setShowDetails} user={currUser}/>
+        <UserDetails setShowDetails={setShowDetails} user={currUser} />
       )}
       <table className="table table-hover table-bordered m-2 text-wrap">
         <thead>
@@ -56,10 +124,14 @@ function Dashboard({ userList, setUserList, handleSelect }) {
                     type="search"
                     className="form-control w-50"
                     placeholder="Username"
+                    onChange={(e) => userNameFilter(e.target.value)}
                   />
                   <i
                     className="fa-solid fa-xmark text-primary ps-2"
-                    onClick={() => setSearch1(false)}
+                    onClick={() => {
+                      setSearch1(false);
+                      setFilterList(userList);
+                    }}
                   ></i>
                 </div>
               ) : (
@@ -79,10 +151,14 @@ function Dashboard({ userList, setUserList, handleSelect }) {
                     type="search"
                     className="form-control w-50"
                     placeholder="Name"
+                    onChange={(e) => nameFilter(e.target.value)}
                   />
                   <i
                     className="fa-solid fa-xmark text-primary ps-2"
-                    onClick={() => setSearch2(false)}
+                    onClick={() => {
+                      setSearch2(false);
+                      setFilterList(userList);
+                    }}
                   ></i>
                 </div>
               ) : (
@@ -99,14 +175,17 @@ function Dashboard({ userList, setUserList, handleSelect }) {
             <th scope="col">Last Name</th>
             <th scope="col">
               Status
-              <select className="border border-0 mx-2">
-                <option className="border border-0" value="0">
+              <select
+                className="border border-0 mx-2"
+                onChange={(e) => statusFilter(e.target.value)}
+              >
+                <option className="border border-0" value="All">
                   All
                 </option>
-                <option className="border border-0" value="1">
+                <option className="border border-0" value="Active">
                   Active
                 </option>
-                <option className="border border-0" value="2">
+                <option className="border border-0" value="Inactive">
                   Inactive
                 </option>
               </select>
@@ -115,7 +194,7 @@ function Dashboard({ userList, setUserList, handleSelect }) {
           </tr>
         </thead>
         <tbody>
-          {userList.map((user, idx) => {
+          {filterList.map((user, idx) => {
             return (
               <tr key={idx}>
                 <th scope="row">{idx + 1}</th>
