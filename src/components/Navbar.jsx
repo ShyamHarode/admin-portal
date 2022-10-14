@@ -4,7 +4,7 @@ import "../App.css";
 
 function Navbar({ login, setLogin }) {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg mb-3" style={{ background: "wheat" }}>
       <div className="container-fluid">
         <NavLink
           className="navbar-brand "

@@ -29,13 +29,15 @@ function Login({ setLogin }) {
       className="d-flex align-items-center flex-column justify-content-center"
       style={{ height: "75vh" }}
     >
+      <h2 className="mb-3">Admin Login</h2>
+      <hr />
       {error && <Error>Invalid Admin Details</Error>}
       <form className="d-flex justify-content-center flex-column align-items-center">
         <div className="mb-3 w-40">
           <input
             type="text"
             className="form-control"
-            placeholder="Username"
+            placeholder="Username- abcd"
             value={userName}
             onChange={(e) => {
               setError(false);
@@ -48,7 +50,7 @@ function Login({ setLogin }) {
             type="password"
             className="form-control"
             id="inputPassword2"
-            placeholder="Password"
+            placeholder="Password- 1234"
             value={password}
             onChange={(e) => {
               setError(false);
