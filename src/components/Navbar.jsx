@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../App.js";
 import { NavLink } from "react-router-dom";
 import "../App.css";
 
-function Navbar({ login, setLogin }) {
+function Navbar() {
+  const { login, setLogin, setAdmin, currentUser } = useContext(UserContext);
+
   return (
-    <nav className="navbar navbar-expand-lg mb-3" style={{ background: "wheat" }}>
+    <nav
+      className="navbar navbar-expand-lg mb-3"
+      style={{ background: "wheat" }}
+    >
       <div className="container-fluid">
         <NavLink
           className="navbar-brand "
           style={{ textDecoration: "none", color: "black" }}
-          to="/"
+          to="/info"
         >
-          Home
+          {login ? currentUser.firstName + " " + currentUser.lastName : "Home"}
         </NavLink>
         <button
           className="navbar-toggler"
@@ -39,13 +45,15 @@ function Navbar({ login, setLogin }) {
               </NavLink>
             </li>
             <li className="nav-item pe-4">
-              <NavLink
+              <a
                 className="nav-link"
-                to="/"
                 style={{ textDecoration: "none", color: "black" }}
+                href="www.linkedin.com/in/shyamharode"
+                target="_blank"
+                rel="noreferrer"
               >
                 About
-              </NavLink>
+              </a>
             </li>
 
             <li className="nav-item pe-4">
@@ -57,7 +65,7 @@ function Navbar({ login, setLogin }) {
                 Dashboard
               </NavLink>
             </li>
-            {login && (
+            {login ? (
               <li
                 className="nav-item text-center p-1"
                 style={{ borderRadius: "10px", background: "orangered" }}
@@ -69,9 +77,28 @@ function Navbar({ login, setLogin }) {
                     textDecoration: "none",
                     color: "black",
                   }}
-                  onClick={() => setLogin(false)}
+                  onClick={() => {
+                    setAdmin(false);
+                    setLogin(false);
+                  }}
                 >
                   Log Out
+                </NavLink>
+              </li>
+            ) : (
+              <li
+                className="nav-item text-center p-1"
+                style={{ borderRadius: "10px", background: "blue" }}
+              >
+                <NavLink
+                  className="nav-link m"
+                  to="/create-user"
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                >
+                  Sign Up
                 </NavLink>
               </li>
             )}
