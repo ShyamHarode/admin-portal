@@ -190,7 +190,7 @@ function CreateUser() {
           className="btn btn-primary "
           style={{ width: "25%", margin: "auto" }}
         >
-          Create User
+          Create New User
         </button>
       </form>
     </div>
