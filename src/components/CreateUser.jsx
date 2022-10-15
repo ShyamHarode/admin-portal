@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
 
 import "../App.css";
 
@@ -15,9 +16,11 @@ const USER = {
   address: "",
 };
 
-function CreateUser({ userList, setUserList }) {
+function CreateUser() {
   const [user, setUser] = useState(USER);
   const navigate = useNavigate();
+  const { admin, userList, setUserList, setLogin, setAdmin, setCurrentUser } =
+    useContext(UserContext);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -29,6 +32,8 @@ function CreateUser({ userList, setUserList }) {
     const list = [...userList];
     list.push(newUser);
     setUserList(list);
+    setLogin(true);
+    if (!admin) setCurrentUser(newUser);
     navigate("/dashboard");
   };
 

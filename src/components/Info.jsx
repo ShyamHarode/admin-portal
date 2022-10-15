@@ -1,15 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
-const UserDetails = ({setShowDetails, user }) => {
+const Info = ({user }) => {
   const navigate = useNavigate();
   const handleCancel = () => {
-    setShowDetails(false);
     navigate("/dashboard");
   };
-  const update = () => {
-    navigate("/update-user");
-  };
+ 
   return (
     <div className="z">
     <div className="card  m-3 bg-secondary text-white">
@@ -28,9 +25,6 @@ const UserDetails = ({setShowDetails, user }) => {
         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
       </div>
       <div className="card-footer text-muted text-center">
-        <button className="btn btn-primary mx-2" onClick={update}>
-          Update Details
-        </button>
         <button className="btn btn-danger mx-2" onClick={handleCancel}>
           Cancel
         </button>
@@ -39,4 +33,4 @@ const UserDetails = ({setShowDetails, user }) => {
     </div>
   );
 };
-export default UserDetails;
+export default Info;

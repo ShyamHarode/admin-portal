@@ -1,7 +1,7 @@
 const Error = ({ children }) => {
   return (
     <div
-      className="w-50 p-2"
+      className="w-80 p-2"
       style={{
         margin: "10px auto",
         borderRadius: 4,

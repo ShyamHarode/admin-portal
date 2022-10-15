@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
 import "../App.css";
 
-function UpdateUser({ userList, setUserList, selectedUser, index }) {
+function UpdateUser({ selectedUser, index }) {
   const [user, setUser] = useState(selectedUser);
   const navigate = useNavigate();
+  const { userList, setUserList } = useContext(UserContext);
+  
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });

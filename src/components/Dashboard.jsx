@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
 import UserDetails from "./UserDetails";
 
-function Dashboard({ userList, setUserList, handleSelect }) {
+function Dashboard({ handleSelect }) {
+  const { userList, setUserList, admin } = useContext(UserContext);
   const [filterList, setFilterList] = useState(userList);
   const [showDetails, setShowDetails] = useState(false);
   const [search1, setSearch1] = useState(false);
@@ -12,14 +14,18 @@ function Dashboard({ userList, setUserList, handleSelect }) {
   const navigate = useNavigate();
 
   const userDetail = (user, idx) => {
+    if(admin){    
     setShowDetails(true);
     setCurrUser(user);
     handleSelect(idx);
+    }
   };
   const handleDelete = (id) => {
+    if(admin){  
     const newList = userList.filter((user) => id !== user.id);
     setUserList(newList);
     setFilterList(newList);
+    }
   };
 
   const statusFilter = (status) => {
@@ -62,7 +68,7 @@ function Dashboard({ userList, setUserList, handleSelect }) {
         <button
           type="button"
           className="btn btn-outline-primary m-2"
-          onClick={() => navigate("/create-user")}
+          onClick={() => { if(admin) navigate("/create-user")}}
         >
           Create New User
         </button>
