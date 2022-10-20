@@ -19,7 +19,7 @@ const USER = {
 function CreateUser() {
   const [user, setUser] = useState(USER);
   const navigate = useNavigate();
-  const { admin, userList, setUserList, setLogin, setAdmin, setCurrentUser } =
+  const { admin, userList, setUserList, setLogin, setCurrentUser } =
     useContext(UserContext);
 
   const handleChange = (e) => {
