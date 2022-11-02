@@ -126,6 +126,7 @@ function Dashboard({ handleSelect }) {
       {showDetails && (
         <UserDetails setShowDetails={setShowDetails} user={currUser} />
       )}
+      <div className="tableData">
       <table className="table table-hover table-bordered  m-2 text-wrap">
         <thead>
           <tr>
@@ -241,6 +242,7 @@ function Dashboard({ handleSelect }) {
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

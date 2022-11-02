@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .App {
-  width: 100vw;
+  width: 100%;
 }
 .cp {
   cursor: pointer;
@@ -27,8 +27,13 @@
   right: 10px;
 }
 .icons a {
- 
   color: rgb(23, 18, 57);
   padding: 1em;
   font-size: large;
+}
+
+@media screen and (max-width: 1000px) {
+  .tableData {
+    overflow: scroll;
+  }
 }
