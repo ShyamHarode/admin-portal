@@ -10,6 +10,7 @@ import CreateUser from "./components/CreateUser";
 import UpdateUser from "./components/UpdateUser";
 import Navbar from "./components/Navbar";
 import Info from "./components/Info";
+import About from "./components/About";
 import { createContext, useState } from "react";
 import "./App.css";
 
@@ -17,7 +18,7 @@ export const UserContext = createContext(null);
 
 function App() {
   const [login, setLogin] = useState(false);
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const [userList, setUserList] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
   const [currentUser, setCurrentUser] = useState({});
@@ -82,13 +83,22 @@ function App() {
                 )
               }
             />
+            <Route path="/about" element={<About />} />
           </Routes>
         </UserContext.Provider>
         <div className="icons">
-            <a href="https://www.facebook.com/shyamharode5"><i className="fa fa-facebook"></i></a>
-            <a href="https://twitter.com/ShyamHarode5"><i className="fa fa-twitter"></i></a>
-            <a href="https://github.com/ShyamHarode"><i className="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/shyamharode/"><i className="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.facebook.com/shyamharode5">
+            <i className="fa fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/ShyamHarode5">
+            <i className="fa fa-twitter"></i>
+          </a>
+          <a href="https://github.com/ShyamHarode">
+            <i className="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/shyamharode/">
+            <i className="fa-brands fa-linkedin-in"></i>
+          </a>
         </div>
       </div>
     </Router>
