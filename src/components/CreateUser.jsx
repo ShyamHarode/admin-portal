@@ -33,7 +33,7 @@ function CreateUser() {
     list.push(newUser);
     setUserList(list);
     setLogin(true);
-    if (!admin) setCurrentUser(newUser);
+    if (!admin) setCurrentUser(user);
     navigate("/dashboard");
   };
 

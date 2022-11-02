@@ -17,7 +17,11 @@ function Navbar() {
           style={{ textDecoration: "none", color: "black" }}
           to="/info"
         >
-          {login ? currentUser.firstName + " " + currentUser.lastName : "Home"}
+          {login ? (
+            currentUser.firstName + " " + currentUser.lastName
+          ) : (
+            <img className="image" src={require("../img/s.png")} alt="logo" />
+          )}
         </NavLink>
         <button
           className="navbar-toggler"
@@ -45,15 +49,13 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item pe-4">
-              <a
+              <NavLink
                 className="nav-link"
+                to="/about"
                 style={{ textDecoration: "none", color: "black" }}
-                href="www.linkedin.com/in/shyamharode"
-                target="_blank"
-                rel="noreferrer"
               >
                 About
-              </a>
+              </NavLink>
             </li>
 
             <li className="nav-item pe-4">
