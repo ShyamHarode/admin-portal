@@ -24,7 +24,7 @@ const About = () => {
             Admin is already registered username is <strong>abcd</strong> and
             password is <strong>1234</strong>
             <br />
-            Only admin can create new user, update user, abd delete user. New
+            Only admin can create new user, update user, and delete user. New
             user can sign up first and login.
           </div>{" "}
         </div>
@@ -88,13 +88,13 @@ const About = () => {
           <div className="accordion-body">
             User can perform following actions:
             <ul>
-              <li>View their details.</li>
+              <li>View his details.</li>
               <li>
                 Filter users data according to their username, first name,
                 status, and gender.
               </li>
             </ul>
-          </div>{" "}
+          </div>
         </div>
       </div>
     </div>
