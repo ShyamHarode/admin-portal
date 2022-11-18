@@ -10,7 +10,7 @@ Only admin can create new user, update user, and delete user. New user can sign 
 ### `Admin Guide`
 
 Admin username is abcd and password is 1234\
-Admin can perform following actions:\
+Admin can perform following actions:
 - Create new user.
 - View user's details.
 - Update user's details.
