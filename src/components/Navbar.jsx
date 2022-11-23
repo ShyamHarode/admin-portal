@@ -7,10 +7,7 @@ function Navbar() {
   const { login, setLogin, setAdmin, currentUser } = useContext(UserContext);
 
   return (
-    <nav
-      className="navbar navbar-expand-lg mb-3"
-      style={{ background: "wheat" }}
-    >
+    <nav className="navbar navbar-expand-lg" style={{ background: "wheat" }}>
       <div className="container-fluid">
         <NavLink
           className="navbar-brand "
@@ -18,7 +15,9 @@ function Navbar() {
           to="/info"
         >
           {login ? (
-            currentUser.firstName + " " + currentUser.lastName
+            <h3 title="User Details">
+              {currentUser.firstName + " " + currentUser.lastName}
+            </h3>
           ) : (
             <img className="image" src={require("../img/s.png")} alt="logo" />
           )}
@@ -38,47 +37,31 @@ function Navbar() {
           className="collapse navbar-collapse flex-grow-0 "
           id="navbarSupportedContent"
         >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
-            <li className="nav-item pe-4">
-              <NavLink
-                className="nav-link"
-                to="/"
-                style={{ textDecoration: "none", color: "black" }}
-              >
+          <ul className="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+            <li className="nav-item p-2">
+              <NavLink className="navItem" to="/">
                 Home
               </NavLink>
             </li>
-            <li className="nav-item pe-4">
-              <NavLink
-                className="nav-link"
-                to="/about"
-                style={{ textDecoration: "none", color: "black" }}
-              >
+            <li className="nav-item p-2">
+              <NavLink className="navItem" to="/about">
                 About
               </NavLink>
             </li>
 
-            <li className="nav-item pe-4">
-              <NavLink
-                className="nav-link"
-                to="/dashboard"
-                style={{ textDecoration: "none", color: "black" }}
-              >
+            <li className="nav-item p-2">
+              <NavLink className="navItem" to="/dashboard">
                 Dashboard
               </NavLink>
             </li>
             {login ? (
               <li
-                className="nav-item text-center p-1"
+                className="nav-item text-center p-1 m-2"
                 style={{ borderRadius: "10px", background: "orangered" }}
               >
                 <NavLink
-                  className="nav-link m"
+                  className="nav-link"
                   to="/"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                  }}
                   onClick={() => {
                     setAdmin(false);
                     setLogin(false);
@@ -93,7 +76,7 @@ function Navbar() {
                 style={{ borderRadius: "10px", background: "blue" }}
               >
                 <NavLink
-                  className="nav-link m"
+                  className="nav-link"
                   to="/create-user"
                   style={{
                     textDecoration: "none",

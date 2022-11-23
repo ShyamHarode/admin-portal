@@ -54,10 +54,11 @@ function Login() {
     }
   };
   return (
-    <div
-      className="d-flex align-items-center flex-column justify-content-center"
-      style={{ height: "75vh" }}
-    >
+    <div className="d-flex align-items-center login">
+      <div className="text-white text-center">
+        <h1 className=" fw-bolder">Welcome to our Website</h1>
+        <h5>Login or Sign Up to Explore more</h5>
+      </div>
       <div className="card text-white bg-dark">
         <div className="card-header ">
           <b>Login as : </b>

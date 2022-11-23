@@ -26,7 +26,7 @@ const About = () => {
             <br />
             Only admin can create new user, update user, and delete user. New
             user can sign up first and login.
-          </div>{" "}
+          </div>
         </div>
       </div>
       <div className="accordion-item">

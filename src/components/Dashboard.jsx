@@ -63,7 +63,7 @@ function Dashboard({ handleSelect }) {
   };
 
   return (
-    <div className="w-100">
+    <div className="w-100 p-3">
       <div>
         {admin && (
           <button
@@ -77,7 +77,7 @@ function Dashboard({ handleSelect }) {
           </button>
         )}
         <div>
-          <h3>Filter</h3>
+          <h3 className="m-2">Filter</h3>
           <form className="row g-3 px-2">
             <div className="col-md-6">
               <b className="form-label mx-3">Name</b>
