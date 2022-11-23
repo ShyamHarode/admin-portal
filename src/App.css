@@ -6,9 +6,17 @@
 .App {
   width: 100%;
 }
+.login {
+  height: 90vh;
+  background-image: url("./img/bg-3.jpg");
+  background-size: cover;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .cp {
   cursor: pointer;
 }
+
 .z {
   width: 100%;
   position: absolute;
@@ -17,8 +25,13 @@
   justify-content: center;
   z-index: 10;
 }
-.nav-link:hover {
-  font-weight: bold;
+.navItem {
+  color: black;
+  text-decoration: none;
+  margin: 10px;
+}
+.navItem:hover {
+  color: blue;
 }
 .icons {
   /* width: 100%; */
@@ -30,6 +43,9 @@
   color: rgb(23, 18, 57);
   padding: 1em;
   font-size: large;
+}
+.icons a:hover {
+  color: aqua;
 }
 .image {
   height: 45px;
