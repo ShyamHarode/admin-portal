@@ -11,7 +11,7 @@ import UpdateUser from "./components/UpdateUser";
 import Navbar from "./components/Navbar";
 import Info from "./components/Info";
 import About from "./components/About";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import "./App.css";
 
 export const UserContext = createContext(null);
@@ -19,7 +19,9 @@ export const UserContext = createContext(null);
 function App() {
   const [login, setLogin] = useState(false);
   const [admin, setAdmin] = useState(false);
-  const [userList, setUserList] = useState([]);
+  const [userList, setUserList] = useState(() => {
+    return JSON.parse(localStorage.getItem("userList")) || [];
+  });
   const [selectedUser, setSelectedUser] = useState({});
   const [currentUser, setCurrentUser] = useState({});
 
@@ -41,6 +43,9 @@ function App() {
     const user = userList[idx];
     setSelectedUser(user);
   };
+  useEffect(() => {
+    localStorage.setItem("userList", JSON.stringify(userList));
+  }, [userList]);
 
   return (
     <Router>
