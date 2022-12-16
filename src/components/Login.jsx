@@ -58,6 +58,8 @@ function Login() {
       <div className="text-white text-center">
         <h1 className=" fw-bolder">Welcome to our Website</h1>
         <h5>Login or Sign Up to Explore more</h5>
+        <h6>Admin Username- abcd</h6>
+        <h6>Admin Password- 1234</h6>
       </div>
       <div className="card text-white bg-dark">
         <div className="card-header ">

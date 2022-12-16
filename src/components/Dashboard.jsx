@@ -53,17 +53,13 @@ function Dashboard({ handleSelect }) {
   };
 
   const genderFilter = (gender) => {
-    if (gender === "All") {
-      setFilterList(userList);
-    } else {
-      const list = [...filterList];
-      const newList = list.filter((user) => user.gender === gender);
-      setFilterList(newList);
-    }
+    const list = [...userList];
+    const newList = list.filter((user) => user.gender === gender);
+    setFilterList(newList);
   };
 
   return (
-    <div className="w-100 p-3">
+    <div className="w-100 p-3 bg-light">
       <div>
         {admin && (
           <button
@@ -77,62 +73,104 @@ function Dashboard({ handleSelect }) {
           </button>
         )}
         <div>
-          <h3 className="m-2">Filter</h3>
-          <form className="row g-3 px-2">
-            <div className="col-md-6">
-              <b className="form-label mx-3">Name</b>
+          <h3 className="m-2">User's Data</h3>
 
-              <input
-                type="email"
-                className="form-control w-50 mx-2"
-                id="inputEmail4"
-                onChange={(e) => nameFilter(e.target.value)}
-              />
-            </div>
-            <div className="col-md-6">
-              <b className="form-label mx-3">Username</b>
-              <input
-                type="text"
-                className="form-control w-50 mx-2"
-                onChange={(e) => userNameFilter(e.target.value)}
-              />
-            </div>
-
-            {/* <br /> */}
-
-            <div className="col-md-6">
-              <b className="mx-3">Status</b>
-              <select
-                className="form-select w-25 mx-2"
-                onChange={(e) => statusFilter(e.target.value)}
-              >
-                <option value="All">All</option>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-              </select>
-            </div>
-            <div className="col-md-6">
-              <b className="mx-3">Gender</b>
-              <select
-                className="form-select w-25 mx-2"
-                onChange={(e) => genderFilter(e.target.value)}
-              >
-                <option value="All">All</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
-          </form>
+          <div className="col-md-6 m-3">
+            <b className="form-label mx-3">Name</b>
+            <input
+              type="search"
+              className="form-control w-50 mx-2"
+              onChange={(e) => nameFilter(e.target.value)}
+            />
+          </div>
         </div>
+        <div className="m-4 d-flex gap-3 justify-content-evenly flex-wrap">
+          <div
+            class="card shadow d-flex align-items-center p-3 cp"
+            style={{ width: "14rem", height: "9rem" }}
+            onClick={() => statusFilter("All")}
+          >
+            <img
+              src="img/users.jfif"
+              class="card-img-top card-image"
+              alt="..."
+            />
+            <div class="card-body">
+              <h4 class="card-text">
+                {userList.length} {userList.length > 1 ? " Users" : " User"}
+              </h4>
+            </div>
+          </div>
+          <div
+            class="card shadow d-flex align-items-center p-3 cp"
+            style={{ width: "14rem", height: "9rem" }}
+            onClick={() => statusFilter("Active")}
+          >
+            <img
+              src="img/active.png"
+              class="card-img-top card-image"
+              alt="..."
+            />
+            <div class="card-body">
+              <h4 class="card-text">
+                {userList.filter((u) => u.status === "Active").length} Active
+              </h4>
+            </div>
+          </div>
+          <div
+            class="card shadow d-flex align-items-center p-3 cp"
+            style={{ width: "14rem", height: "9rem" }}
+            onClick={() => statusFilter("Inactive")}
+          >
+            <img
+              src="img/inactive.png"
+              class="card-img-top card-image"
+              alt="..."
+            />
+            <div class="card-body">
+              <h4 class="card-text">
+                {userList.filter((u) => u.status === "Inactive").length}{" "}
+                Inactive
+              </h4>
+            </div>
+          </div>
 
-        <br />
+          <div
+            class="card shadow d-flex align-items-center p-3 cp"
+            style={{ width: "14rem", height: "9rem" }}
+            onClick={() => genderFilter("Male")}
+          >
+            <img src="img/male.png" class="card-img-top card-image" alt="..." />
+            <div class="card-body">
+              <h4 class="card-text">
+                {userList.filter((u) => u.gender === "Male").length}
+              </h4>
+            </div>
+          </div>
+          <div
+            class="card shadow d-flex align-items-center p-3 cp"
+            style={{ width: "14rem", height: "9rem" }}
+            onClick={() => genderFilter("Female")}
+          >
+            <img
+              src="img/female.jfif"
+              class="card-img-top card-image"
+              alt="..."
+            />
+            <div class="card-body">
+              <h4 class="card-text">
+                {userList.filter((u) => u.gender === "Female").length}
+              </h4>
+            </div>
+          </div>
+        </div>
       </div>
 
       {showDetails && (
         <UserDetails setShowDetails={setShowDetails} user={currUser} />
       )}
-      <div className="tableData">
-        <table className="table table-hover table-bordered  m-2 text-wrap">
+      <div className=" tableData  p-4 rounded shadow bg-white">
+        <table className="table table-hover table-bordered  m-auto text-wrap">
           <thead className="text-center">
             <tr>
               <th scope="col">No.</th>

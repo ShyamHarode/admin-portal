@@ -19,7 +19,7 @@ function Navbar() {
               {currentUser.firstName + " " + currentUser.lastName}
             </h3>
           ) : (
-            <img className="image" src={require("../img/s.png")} alt="logo" />
+            <img className="image" src={"img/s.png"} alt="logo" />
           )}
         </NavLink>
         <button

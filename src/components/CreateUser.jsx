@@ -38,9 +38,9 @@ function CreateUser() {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex bg-light justify-content-center">
       <form
-        className="d-flex flex-column gap-3 border border-4 rounded px-5 py-2 m-3"
+        className="d-flex flex-column gap-3 bg-white rounded px-5 py-2 m-3 shadow-lg"
         onSubmit={handleSubmit}
       >
         <h2 className="text-center border-bottom">User Details</h2>
@@ -141,7 +141,7 @@ function CreateUser() {
                 type="radio"
                 id="f"
                 name="gender"
-                value={"Female "}
+                value={"Female"}
                 onChange={handleChange}
                 required
               />
