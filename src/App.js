@@ -20,7 +20,7 @@ function App() {
   const [login, setLogin] = useState(false);
   const [admin, setAdmin] = useState(false);
   const [userList, setUserList] = useState(() => {
-    return JSON.parse(localStorage.getItem("userList")) || [];
+    return JSON.parse(localStorage.getItem("userList")) || initialState;
   });
   const [selectedUser, setSelectedUser] = useState({});
   const [currentUser, setCurrentUser] = useState({});
@@ -111,3 +111,55 @@ function App() {
 }
 
 export default App;
+
+const initialState = [{
+    address: "168, Bhopal, MP",
+    email: "shyamharode5395@gmail.com",
+    firstName: "SHYAM",
+    gender: "Male",
+    id: 1671213658578,
+    lastName: "HARODE",
+    password: "1234",
+    status: "Active",
+    userName: "shyamHarode",
+},{
+    address: "245, RAVINDRA BHAWAN, PARMANDAL MP",
+    email: "shyam@gmail.com",
+    firstName: "Vijay",
+    gender: "Male",
+    id: 1671213658579,
+    lastName: "Sharma",
+    password: "v123",
+    status: "Active",
+    userName: "vj1234",
+},{
+    address: "168 P.H.NO. 18, VILLAGE PARMANDAL, Delhi",
+    email: "vinod@gmail.com",
+    firstName: "Vinod",
+    gender: "Male",
+    id: 1671213658538,
+    lastName: "Sharma",
+    password: "1234",
+    status: "Inactive",
+    userName: "vinod123",
+},{
+    address: "16L, east road, Indore MP",
+    email: "sara23@gmail.com",
+    firstName: "Sara",
+    gender: "Female",
+    id: 1671213658518,
+    lastName: "Khan",
+    password: "1234",
+    status: "Active",
+    userName: "sara5555",
+}, {
+    address: "45, MP nagar, Bhopal MP",
+    email: "sakshi@gmail.com",
+    firstName: "Sakshi",
+    gender: "Female",
+    id: 1671213658548,
+    lastName: "Gupta",
+    password: "2222",
+    status: "Inactive",
+    userName: "gupta123",
+},]
